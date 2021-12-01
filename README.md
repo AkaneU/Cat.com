@@ -1,24 +1,33 @@
-# README
+# <Cat.com>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+<猫の写真や動画を投稿したり、見たり、または猫に関する色んな情報を共有するSNS。>
 
-Things you may want to cover:
+### サイトテーマ
+<猫の写真、動画、情報のシェア>
 
-* Ruby version
+### テーマを選んだ理由
+<私は猫が大好きです。しかし、私は猫アレルギーで猫を飼うことが出来ません。猫を飼うことはできませんが、ツイッターやyoutubeなどでほかの人が飼っている猫の写真や動画を見て癒されています。なので猫の事だけを発信・共有するＳＮＳを作り、猫が好きで猫を飼っている人は自分の猫の可愛さを共有、何らかの理由で猫を飼っていないけど猫が好きで猫を見て癒されたい人が猫の写真をたくさんみることが出来たらよいのではないかと思い、このテーマにしました。>
 
-* System dependencies
+### ターゲットユーザ
+<猫好きな人。猫を飼っている人は勿論、猫を飼っていない人も。猫モチーフの商品など、猫に関する情報交換したい人。>
 
-* Configuration
+### 主な利用シーン
+<日々の空き時間などに、猫を見て癒されたりしたい時に。その他にもかわいい猫モチーフの商品の情報やおすすめの猫カフェなどの知りたい時や、共有したい時に。>
 
-* Database creation
+### 設計書
+<>
 
-* Database initialization
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1n1mBv_XRz5vAGK1WHTJvHoSPRu4iLwj5I6eveFexqRc/edit#gid=0>
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
