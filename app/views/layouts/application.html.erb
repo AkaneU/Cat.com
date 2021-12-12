@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <% if end_user_signed_in? %>
+      <%= link_to "Log out", destroy_end_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign up", new_end_user_registration_path %>
+      <%= link_to "Log in", new_end_user_session_path %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
