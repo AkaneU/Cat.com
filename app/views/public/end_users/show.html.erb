@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="list-group">
+        <%= link_to "Timeline", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Popular", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "New", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Search", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Create post", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your favorite posts", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action" %>
+      </div>
+    </div>
+    <div class="col">
+      <ur class="nav nav-tabs">
+        <%= link_to "Info", end_user_path(@end_user), class: "nav-link active" %>
+        <%= link_to "Notice", end_user_path(@end_user), class: "nav-link" %>
+      </ur>
+      <br>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Your info</h3>
+        </div>
+        <div class="row">
+          <div class="col-3 offset-1">
+            <%= image_tag 'no_image.jpg', class: "circle"%>
+            <br>
+            35 followers
+            <br>
+            15 follows
+          </div>
+          <div class="col-3">
+            <table class="table-borderless">
+              <tbody>
+                <tr>
+                  <th>Username</th>
+                  <th><%= @end_user.name %></th>
+                </tr>
+                <tr>
+                  <th>Email</th>
+                  <th><%= @end_user.email %></th>
+                </tr>
+                <tr>
+                  <th><%= link_to "ユーザー情報編集", edit_end_user_path(@end_user), class: "btn btn-secondary" %></th>
+                </tr>
+                <tr>
+                  <th><%= link_to "アカウント削除", edit_end_user_path(@end_user), method: :delete, class: "btn btn-danger" %></th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        <div>
+      </div>
+    </div>
+  </div>
+</div>
