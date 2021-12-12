@@ -1,4 +1,10 @@
 class Public::PostsController < ApplicationController
+  def index
+  end
+
+  def timeline
+  end
+
   def new
   end
 
