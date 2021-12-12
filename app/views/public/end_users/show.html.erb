@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-3">
       <div class="list-group">
         <%= link_to "Timeline", posts_path, class: "list-group-item list-group-item-action" %>
         <%= link_to "Popular", posts_path, class: "list-group-item list-group-item-action" %>
@@ -11,10 +11,10 @@
         <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action" %>
       </div>
     </div>
-    <div class="col">
+    <div class="col offset-1">
       <ur class="nav nav-tabs">
         <%= link_to "Info", end_user_path(@end_user), class: "nav-link active" %>
-        <%= link_to "Notice", end_user_path(@end_user), class: "nav-link" %>
+        <%= link_to "Notice", notifications_path, class: "nav-link" %>
       </ur>
       <br>
       <div class="card">
@@ -23,7 +23,7 @@
         </div>
         <div class="row">
           <div class="col-3 offset-1">
-            <%= image_tag 'no_image.jpg', class: "circle"%>
+            <%= attachment_image_tag @end_user, :profile_image, fallback: "no_image.jpg", class: "circle"%>
             <br>
             35 followers
             <br>
