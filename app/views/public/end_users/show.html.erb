@@ -29,7 +29,7 @@
             <br>
             15 follows
           </div>
-          <div class="col-3">
+          <div class="col-7">
             <table class="table-borderless">
               <tbody>
                 <tr>
@@ -44,12 +44,12 @@
                   <th><%= link_to "ユーザー情報編集", edit_end_user_path(@end_user), class: "btn btn-secondary" %></th>
                 </tr>
                 <tr>
-                  <th><%= link_to "アカウント削除", edit_end_user_path(@end_user), method: :delete, class: "btn btn-danger" %></th>
+                  <th><%= link_to "アカウント削除", check_path, class: "btn btn-danger" %></th>
                 </tr>
               </tbody>
             </table>
           </div>
-        <div>
+        </div>
       </div>
     </div>
   </div>

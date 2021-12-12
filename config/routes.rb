@@ -11,7 +11,10 @@ Rails.application.routes.draw do
 
   root :to => "public/homes#top"
 
-  resources :end_users, module: :public
+  patch 'end_users/withdrawal' => "public/end_users#withdrawal", as: "withdrawal"
+  get 'end_users/check' => "public/end_users#check", as: "check"
+
+  resources :end_users, only: [:show, :edit, :update], module: :public
 
   resources :posts, module: :public
 
