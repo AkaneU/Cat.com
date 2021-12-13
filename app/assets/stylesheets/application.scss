@@ -16,3 +16,9 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
+ .circle {
+  border: 3px solid #999;
+  border-radius: 50%;
+  object-fit: cover,
+ }

@@ -4,13 +4,13 @@
       <div class="card">
         <div class="card-body">
         <h2 class="card-title">Sign up</h2>
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= form_with model: @end_user, url: end_user_registration_path, local: true do |f| %>
             <%= render "public/shared/error_messages", resource: resource %>
 
             <div class="row">
               <div class="col">
                 <%= f.label :name %><br>
-                <%= f.email_field :name, autofocus: true %>
+                <%= f.text_field :name, autofocus: true %>
               </div>
             </div>
 

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="list-group">
+        <%= link_to "Timeline", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Popular", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "New", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Search", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Create post", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your favorite posts", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action" %>
+      </div>
+    </div>
+    <div class="col offset-1">
+      <% if @end_user == current_end_user %>
+        <%= render 'current_end_user', end_user: @end_user %>
+      <% else %>
+        <%= render 'other_end_user', {end_user: @end_user, recent_posts: @recent_posts} %>
+      <% end %>
+    </div>
+  </div>
+</div>
