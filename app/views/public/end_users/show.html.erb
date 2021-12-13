@@ -12,45 +12,11 @@
       </div>
     </div>
     <div class="col offset-1">
-      <ur class="nav nav-tabs">
-        <%= link_to "Info", end_user_path(@end_user), class: "nav-link active" %>
-        <%= link_to "Notice", notifications_path, class: "nav-link" %>
-      </ur>
-      <br>
-      <div class="card">
-        <div class="card-body">
-          <h3 class="card-title">Your info</h3>
-        </div>
-        <div class="row">
-          <div class="col-3 offset-1">
-            <%= attachment_image_tag @end_user, :profile_image, fallback: "no_image.jpg", class: "circle"%>
-            <br>
-            35 followers
-            <br>
-            15 follows
-          </div>
-          <div class="col-7">
-            <table class="table-borderless">
-              <tbody>
-                <tr>
-                  <th>Username</th>
-                  <th><%= @end_user.name %></th>
-                </tr>
-                <tr>
-                  <th>Email</th>
-                  <th><%= @end_user.email %></th>
-                </tr>
-                <tr>
-                  <th><%= link_to "ユーザー情報編集", edit_end_user_path(@end_user), class: "btn btn-secondary" %></th>
-                </tr>
-                <tr>
-                  <th><%= link_to "アカウント削除", check_path, class: "btn btn-danger" %></th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+      <% if @end_user == current_end_user %>
+        <%= render 'current_end_user', end_user: @end_user %>
+      <% else %>
+        <%= render 'other_end_user', {end_user: @end_user, recent_posts: @recent_posts} %>
+      <% end %>
     </div>
   </div>
 </div>

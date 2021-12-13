@@ -13,11 +13,18 @@ Rails.application.routes.draw do
 
   patch 'end_users/withdrawal' => "public/end_users#withdrawal", as: "withdrawal"
   get 'end_users/check' => "public/end_users#check", as: "check"
-
-  resources :end_users, only: [:show, :edit, :update], module: :public
+  scope module: :public do
+    resources :end_users, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => "relationships#followings", as: "followings"
+      get 'followers' => "relationships#followers", as: "followers"
+    end
+  end
 
   resources :posts, module: :public
 
   resources :notifications, only: [:index], module: :public
 
 end
+
+
