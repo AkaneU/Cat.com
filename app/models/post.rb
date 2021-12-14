@@ -1,12 +1,12 @@
 class Post < ApplicationRecord
 
-  belongs_to :user
+  belongs_to :end_user
+  has_many :image_files
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  has_one_attached :image
-  has_many_attached :main_images
+  accepts_attachments_for :image_files, attachment: :image, append: true
 
   acts_as_taggable
 end

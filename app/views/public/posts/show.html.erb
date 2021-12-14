@@ -15,15 +15,30 @@
       <div class="card">
         <div class="row g-0">
           <div class="col-8">
-            <%= attachment_image_tag @post, :image %>
+            <% @post.image_files.each do |image| %>
+              <%= attachment_image_tag image, :image, size: "500x450" %>
+            <% end %>
           </div>
           <div class="col-4">
             <div class="card-body">
               <div class="card-title">
-                <%= attachment_image_tag @post, :image, class: "circle"%>
+                <%= attachment_image_tag @post.end_user, :profile_image, fallback: "no_image.jpg", class: "circle"%>
                 <%= @post.end_user.name %>
               </div>
-              <%= @post.text %>
+              <div class="row">
+                <%= @post.text %>
+              </div>
+              <div class="row">
+                #whit #black #cute
+              </div>
+              <div class="row">
+                <div class="col">
+                  ♡100
+                </div>
+                <div class="col">
+                  <%= @post.created_at %>
+                </div>
+              </div>
             </div>
           </div>
         </div>

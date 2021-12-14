@@ -21,7 +21,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts, module: :public
+  scope module: :public do
+    resources :posts do
+      resources :post_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
+  end
 
   resources :notifications, only: [:index], module: :public
 

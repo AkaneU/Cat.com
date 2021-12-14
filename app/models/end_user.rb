@@ -4,12 +4,11 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  attachment :profile_image
 
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
-  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id",dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   has_many :inquiries, dependent: :destroy
 
@@ -18,6 +17,8 @@ class EndUser < ApplicationRecord
 
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
+
+  attachment :profile_image
 
   def follow(end_user_id)
     relationships.create(followed_id: end_user_id)

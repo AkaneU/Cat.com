@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+
+
   def index
   end
 
@@ -6,7 +8,7 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:image_files).find(params[:id])
   end
 
   def new
@@ -15,6 +17,8 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    binding.pry
+    @post.end_user = current_end_user
     if @post.save
       redirect_to post_path(@post)
     else
@@ -31,7 +35,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :tag_list, :image, main_images: [])
+    params.require(:post).permit(:title, :text, :tag_list, image_files_images: [])
   end
 
 end
