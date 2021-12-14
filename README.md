@@ -22,6 +22,7 @@
 
 ### 設計書
 - ER図
+https://drive.google.com/drive/folders/1dtZkf3mrCINVapNg3_KYGbaby9wF1D8p
 - テーブル設計書
 https://docs.google.com/spreadsheets/d/1Jfpnw6N95lbnpoUhiPUZll5k6sfc4BKdVxGQzflcJqY/edit#gid=1911453102
 - アプリケーション修正詳細設計
