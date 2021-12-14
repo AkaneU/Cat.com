@@ -1,10 +1,32 @@
 class Public::PostsController < ApplicationController
 
-
-  def index
+  def timeline
+     @posts = Post.order(created_at: :desc)
   end
 
-  def timeline
+  def new_posts
+    @posts = Post.order(created_at: :desc)
+  end
+
+  def this_week_popular
+    @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.all_week}).group(:post_id).order('count(end_user_id) desc').limit(50)
+      @posts.each do |post|
+        post = Post.includes(:image_files)
+      end
+  end
+
+  def this_month_popular
+     @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.all_month}).group(:post_id).order('count(end_user_id) desc').limit(50)
+      @posts.each do |post|
+        post = Post.includes(:image_files)
+      end
+  end
+
+  def last_month_popular
+     @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.last_month.all_month}).group(:post_id).order('count(end_user_id) desc').limit(50)
+      @posts.each do |post|
+        post = Post.includes(:image_files)
+      end
   end
 
   def show
@@ -17,7 +39,6 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    binding.pry
     @post.end_user = current_end_user
     if @post.save
       redirect_to post_path(@post)
@@ -27,6 +48,13 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post =Post.find(params[:id])
+    @post.update(post_params)
+    redirect_to post_path(@post)
   end
 
   def destroy
