@@ -1,5 +1,9 @@
 class Public::PostsController < ApplicationController
 
+  def index
+    @posts = Post.where(end_user_id: current_end_user.id)
+  end
+
   def timeline
      @posts = Post.order(created_at: :desc)
   end
