@@ -1,20 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <title>CatCom</title>
+    <meta charset="utf-8">
+    <title>Cat.Com</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if end_user_signed_in? %>
-      <%= link_to "Log out", destroy_end_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_end_user_registration_path %>
-      <%= link_to "Log in", new_end_user_session_path %>
-    <% end %>
+    <nav class="navbar navbar-light bg-dark">
+      <a class="navbar-brand text-white" href="/">Cat.com</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto my-2 my-lg-0" style="max-height: 100px;">
+          <li class="nav-item">
+            <% if end_user_signed_in? %>
+              <li class="nav-item"><%= link_to "Your info", end_user_path(current_end_user) %></li>
+              <li class="nav-item"><%= link_to "Notification", notifications_path %></li>
+              <li class="nav-item"><%= link_to "Contact us", new_inquiry_path %></li>
+              <li class="nav-item"><%= link_to "Log out", destroy_end_user_session_path, method: :delete %></li>
+            <% else %>
+              <%= link_to "Sign up", new_end_user_registration_path %>
+              <%= link_to "Log in", new_end_user_session_path %>
+            <% end %>
+          </li>
+        </ur>
+      </div>
+    </nav>
+    <br>
     <%= yield %>
+    <br>
+    <footer class="bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto">
+            <p class="text-white">CopyRight Cat.com</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
