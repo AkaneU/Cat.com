@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :inquiries, only: [:new, :create], module: :public
+
   resources :notifications, only: [:index], module: :public
 
 end

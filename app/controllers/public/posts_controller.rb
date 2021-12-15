@@ -5,7 +5,7 @@ class Public::PostsController < ApplicationController
   end
 
   def timeline
-     @posts = Post.order(created_at: :desc)
+    @posts = Post.where(end_user_id: [current_end_user.id, *current_end_user.following_ids])
   end
 
   def new_posts
