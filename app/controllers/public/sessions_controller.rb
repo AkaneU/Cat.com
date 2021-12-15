@@ -9,11 +9,16 @@ class Public::SessionsController < Devise::SessionsController
 
   def reject_end_user
     @end_user = EndUser.find_by(email: params[:end_user][:email])
+    return if !@customer
     if @end_user.valid_password?(params[:end_user][:password]) && (@end_user.is_deleted == true)
       redirect_to new_end_user_registration_path
     else
-      rendirect_to end_user_session_path
+      redirect_back(fallback_location: new_end_user_session_path)
     end
+  end
+
+  def after_sign_in_path_for(resource)
+    end_user_path(resource)
   end
 
   # GET /resource/sign_in

@@ -21,7 +21,19 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts, module: :public
+  get 'posts/popular' => "public/posts#this_week_popular", as: "popular"
+  get 'posts/this_month_popular' => "public/posts#this_month_popular", as: "this_month_popular"
+  get 'posts/last_month_popular' => "public/posts#last_month_popular", as: "last_month_popular"
+  get 'posts/new_posts' => "public/posts#new_posts"
+  get 'posts/timeline' => "public/posts#timeline", as: "timeline"
+  scope module: :public do
+    resources :posts do
+      resources :post_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
+  end
+
+  resources :inquiries, only: [:new, :create], module: :public
 
   resources :notifications, only: [:index], module: :public
 

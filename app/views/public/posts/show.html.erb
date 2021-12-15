@@ -1,2 +1,48 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="list-group">
+        <%= link_to "Timeline", timeline_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Popular", popular_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "New", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Search", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Create post", new_post_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your favorite posts", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action" %>
+      </div>
+    </div>
+    <div class="col offset-1">
+      <div class="card">
+        <div class="row g-0">
+          <div class="col-8">
+            <% @post.image_files.each do |image| %>
+              <%= attachment_image_tag image, :image, size: "500x450" %>
+            <% end %>
+          </div>
+          <div class="col-4">
+            <div class="card-body">
+              <div class="card-title">
+                <%= attachment_image_tag @post.end_user, :profile_image, fallback: "no_image.jpg", class: "circle"%>
+                <%= @post.end_user.name %>
+              </div>
+              <div class="row">
+                <%= @post.text %>
+              </div>
+              <div class="row">
+                #whit #black #cute
+              </div>
+              <div class="row">
+                <div class="col">
+                  ♡100
+                </div>
+                <div class="col">
+                  <%= @post.created_at %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

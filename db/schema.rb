@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_123043) do
+ActiveRecord::Schema.define(version: 2021_12_14_063520) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 2021_12_12_123043) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "image_files", force: :cascade do |t|
+    t.string "image_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "inquiries", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -76,7 +83,6 @@ ActiveRecord::Schema.define(version: 2021_12_12_123043) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "end_user_id"
-    t.string "image_id"
     t.string "title"
     t.string "text"
     t.datetime "created_at", null: false

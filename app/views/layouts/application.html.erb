@@ -4,7 +4,6 @@
     <title>CatCom</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -16,7 +15,6 @@
       <%= link_to "Sign up", new_end_user_registration_path %>
       <%= link_to "Log in", new_end_user_session_path %>
     <% end %>
-
     <%= yield %>
   </body>
 </html>
