@@ -26,8 +26,8 @@
               <li class="nav-item"><%= link_to "Contact us", new_inquiry_path %></li>
               <li class="nav-item"><%= link_to "Log out", destroy_end_user_session_path, method: :delete %></li>
             <% else %>
-              <%= link_to "Sign up", new_end_user_registration_path %>
-              <%= link_to "Log in", new_end_user_session_path %>
+              <li class="nav-item"><%= link_to "Sign up", new_end_user_registration_path %></li>
+              <li class="nav-item"><%= link_to "Log in", new_end_user_session_path %></li>
             <% end %>
           </li>
         </ur>
