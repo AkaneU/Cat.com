@@ -29,7 +29,9 @@
                 <%= @post.text %>
               </div>
               <div class="row">
-                #whit #black #cute
+                <% @post.tag_list.each do |tag| %>
+                  <%= tag %>
+                <% end %>
               </div>
               <div class="row">
                 <div class="col-auto">
