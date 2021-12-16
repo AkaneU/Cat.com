@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'posts/last_month_popular' => "public/posts#last_month_popular", as: "last_month_popular"
   get 'posts/new_posts' => "public/posts#new_posts"
   get 'posts/timeline' => "public/posts#timeline", as: "timeline"
+  get 'posts/favorited' => "public/posts#favorited"
   scope module: :public do
     resources :posts do
       resources :post_comments, only: [:create, :destroy]

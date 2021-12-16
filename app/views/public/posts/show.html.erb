@@ -7,7 +7,7 @@
         <%= link_to "New", posts_new_posts_path, class: "list-group-item list-group-item-action" %>
         <%= link_to "Search", posts_path, class: "list-group-item list-group-item-action" %>
         <%= link_to "Create post", new_post_path, class: "list-group-item list-group-item-action" %>
-        <%= link_to "Your favorite posts", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your favorite posts", posts_favorited_path, class: "list-group-item list-group-item-action" %>
         <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action" %>
       </div>
     </div>
@@ -22,7 +22,9 @@
           <div class="col-4">
             <div class="card-body">
               <div class="card-title">
-                <%= attachment_image_tag @post.end_user, :profile_image, fallback: "no_image.jpg", class: "circle"%>
+                <%= link_to end_user_path(@post.end_user) do %>
+                  <%= attachment_image_tag @post.end_user, :profile_image, width: "30%", heigth: "30%", fallback: "no_image.jpg", class: "circle"%>
+                <% end %>
                 <%= @post.end_user.name %>
               </div>
               <div class="row">
@@ -30,7 +32,10 @@
               </div>
               <div class="row">
                 <% @post.tag_list.each do |tag| %>
-                  <%= tag %>
+                  <%= link_to posts_path(tag) do %>
+                    #<%= tag %>
+                  <% end %>
+                   &nbsp;
                 <% end %>
               </div>
               <div class="row">
