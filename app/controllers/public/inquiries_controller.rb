@@ -11,9 +11,9 @@ class Public::InquiriesController < ApplicationController
   def create
     @inquiry = Inquiry.new(inquiry_params)
     if params[:back]
-      render :new
-      return
+      render :new and return
     else
+      @inquiry.end_user = current_end_user
       @inquiry.save
       redirect_to end_user_path(current_end_user.id)
     end
