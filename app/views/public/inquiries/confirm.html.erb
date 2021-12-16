@@ -1,2 +1,40 @@
-<h1>Public::Inquiries#confirm</h1>
-<p>Find me in app/views/public/inquiries/confirm.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Contact us</h3>
+          <p　class="text-center">内容はこれでよろしいですか？</p>
+          <table class="table-borderless">
+            <tbody>
+              <tr>
+                <th>お名前</th>
+                <th><%= @inquiry.name %></th>
+              </tr>
+              <tr>
+                <th>メールアドレス</th>
+                <th><%= @inquiry.email %></th>
+              </tr>
+              <tr>
+                <th>お問い合わせタイトル</th>
+                <th><%= @inquiry.title %></th>
+              </tr>
+              <tr>
+                <th>お問い合わせ内容</th>
+                <th><%= @inquiry.text %></th>
+              </tr>
+            </tbody>
+          </table>
+          <%= form_with model:@inquiry, local: true do |f| %>
+            <%= f.hidden_field :name, value: @inquiry.name %>
+            <%= f.hidden_field :email, value: @inquiry.email %>
+            <%= f.hidden_field :title, value: @inquiry.title %>
+            <%= f.hidden_field :text, value: @inquiry.text %>
+            <%= f.submit "修正", name: :back, class: "btn btn-secodary" %>
+            <%= f.submit "送信", class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

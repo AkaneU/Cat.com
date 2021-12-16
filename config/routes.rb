@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     end
   end
 
+  post 'inquiries/confirm' => "public/inquiries#confirm", as: "confirm"
   resources :inquiries, only: [:new, :create], module: :public
 
   resources :notifications, only: [:index], module: :public
