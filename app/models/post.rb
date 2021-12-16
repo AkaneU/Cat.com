@@ -8,7 +8,8 @@ class Post < ApplicationRecord
 
   accepts_attachments_for :image_files, attachment: :image, append: true
 
-  acts_as_taggable
+  acts_as_taggable_on :tags
+  acts_as_taggable_on :skills, :interests
 
   def favorited_by?(end_user)
     favorites.where(end_user_id: end_user.id).exists?

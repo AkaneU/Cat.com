@@ -33,6 +33,11 @@ class Public::PostsController < ApplicationController
       end
   end
 
+  def favorited
+    favorites = Favorite.where(end_user_id: current_end_user.id).pluck(:post_id)
+    @posts = Post.find(favorites)
+  end
+
   def show
     @post = Post.includes(:image_files).find(params[:id])
   end
