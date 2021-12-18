@@ -3,6 +3,7 @@ class Public::FavoritesController < ApplicationController
     @post = Post.find(params[:post_id])
     favorite = current_end_user.favorites.new(post_id: @post.id)
     favorite.save
+    @post.create_notification_favorite!(current_end_user)
     redirect_back(fallback_location: posts_path)
   end
 
