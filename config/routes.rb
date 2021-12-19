@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :end_users, only: [:index, :show, :edit, :update]
+  end
 
 
   get 'posts/popular' => "public/posts#this_week_popular", as: "popular"
@@ -40,11 +43,15 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :posts, only: [:index, :show, :destroy]
+  end
+
   post 'inquiries/confirm' => "public/inquiries#confirm", as: "confirm"
   resources :inquiries, only: [:new, :create], module: :public
 
   namespace :admin do
-    resources :inquiries, only: [:index, :destroy]
+    resources :inquiries, only: [:index, :show, :destroy]
   end
 
   resources :notifications, only: [:index], module: :public
