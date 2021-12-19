@@ -70,22 +70,7 @@ class Public::PostsController < ApplicationController
   def destroy
   end
 
-  def create_notification_favorite!(current_end_user)
-    temp = Notification.where(["visitor_id = ? and visited_id and post_id = ? and action = ?", current_end_user.id, end_user.id, ])
-    if temp.blank?
-      notification = current_end_user.active_notifications.new(
-        post_id: id,
-        visited_id: end_user_id,
-        action: favorite,
-      )
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
-      notification.save if notification.valid?
-    end
-   end
-
-
+  
   private
 
   def post_params

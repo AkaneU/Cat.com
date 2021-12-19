@@ -17,13 +17,11 @@
         <%= link_to "Notice", notifications_path, class: "nav-link active" %>
       </ur>
       <br>
-      <table class="table-striped">
-        <tbody>
-          <tr>
-            <th></th>
-          </tr>
-        </tbody>
-      </table>
+      <% if @notifications.exists? %>
+        <%= render @notifications %>
+      <% else %>
+        <p class="text-center">通知はありません</p>
+      <% end %>
     </div>
   </div>
 </div>
