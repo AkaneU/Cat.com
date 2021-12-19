@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="list-group text-center">
+        <%= link_to "Timeline", timeline_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Popular", popular_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "New", posts_new_posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Search", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Create post", new_post_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your favorite posts", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action" %>
+      </div>
+    </div>
+    <div class="col offset-1">
+      <ur class="nav nav-tabs">
+        <%= link_to "Info", end_user_path(current_end_user), class: "nav-link" %>
+        <%= link_to "Notice", notifications_path, class: "nav-link active" %>
+      </ur>
+      <br>
+      <% if @notifications.exists? %>
+        <%= render @notifications %>
+      <% else %>
+        <p class="text-center">通知はありません</p>
+      <% end %>
+    </div>
+  </div>
+</div>

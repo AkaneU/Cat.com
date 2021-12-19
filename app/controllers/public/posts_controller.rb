@@ -70,6 +70,7 @@ class Public::PostsController < ApplicationController
   def destroy
   end
 
+  
   private
 
   def post_params
