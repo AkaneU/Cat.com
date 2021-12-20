@@ -1,2 +1,33 @@
-<h1>Admin::Posts#index</h1>
-<p>Find me in app/views/admin/posts/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col offset-1">
+      <h3>投稿一覧</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>タイトル</th>
+              <th>投稿者</th>
+              <th></th>
+            </tr>
+          </thead>
+          <% @posts.each do |post| %>
+            <tbody>
+              <tr>
+                <td>
+                  <% post.image_files.first(1).each do |image| %>
+                    <%= attachment_image_tag image, :image, size: "50x50" %>
+                  <% end %>
+                </td>
+                <td><%= post.title %></td>
+                <td><%= post.end_user.name %></td>
+                <td>
+                  <%= link_to "詳細へ", admin_post_path(post), class: "btn btn-success" %>
+                </td>
+              </tr>
+            </tbody>
+          <% end %>
+      </table>
+    </div>
+  </div>
+</div>

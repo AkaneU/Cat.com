@@ -15,6 +15,10 @@ Rails.application.routes.draw do
    root :to => "homes#home"
   end
 
+  namespace :admin do
+    resources :end_users, only: [:index, :show, :edit, :update]
+  end
+
   patch 'end_users/withdrawal' => "public/end_users#withdrawal", as: "withdrawal"
   get 'end_users/check' => "public/end_users#check", as: "check"
   scope module: :public do
@@ -23,10 +27,6 @@ Rails.application.routes.draw do
       get 'followings' => "relationships#followings", as: "followings"
       get 'followers' => "relationships#followers", as: "followers"
     end
-  end
-
-  namespace :admin do
-    resources :end_users, only: [:index, :show, :edit, :update]
   end
 
 
@@ -44,7 +44,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :posts, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
   end
 
   post 'inquiries/confirm' => "public/inquiries#confirm", as: "confirm"
