@@ -1,2 +1,77 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card">
+        <div class="row g-0">
+          <div class="col-8">
+            <% @post.image_files.each do |image| %>
+              <%= attachment_image_tag image, :image, size: "500x450" %>
+            <% end %>
+          </div>
+          <div class="col-4">
+            <div class="card-body">
+              <div class="card-title">
+                <%= link_to admin_end_user_path(@post.end_user) do %>
+                  <%= attachment_image_tag @post.end_user, :profile_image, width: "30%", heigth: "30%", fallback: "no_image.jpg", class: "circle"%>
+                <% end %>
+                <%= @post.end_user.name %>
+              </div>
+              <div class="row">
+                <%= @post.text %>
+              </div>
+              <div class="row">
+                <% @post.tag_list.each do |tag| %>
+                  <%= link_to posts_path(tag) do %>
+                    #<%= tag %>
+                  <% end %>
+                   &nbsp;
+                <% end %>
+              </div>
+              <div class="row">
+                <div class="col-auto">
+                  ♥<%= @post.favorites.count %>
+                </div>
+                <div class="col">
+                  <%= @post.created_at.strftime("%Y/%m/%d") %>
+                </div>
+              </div>
+              <div class="row">
+                <%= link_to "投稿を削除", admin_post_path(@post), method: :delete, class: "btn btn-danger" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="card">
+        <div class="card-header">コメント (<%= @post.post_comments.count %>)</div>
+        <div class="card-body">
+          <% if @post.post_comments.blank? %>
+            <p class="text-center">コメントはありません</p>
+          <% else %>
+            <% @post.post_comments.each do |post_comment| %>
+              <tbody>
+                <tr>
+                  <td>
+                    <%= link_to end_user_path(post_comment.end_user_id) do %>
+                      <%= attachment_image_tag post_comment.end_user.profile_image, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "40x40", class: "circle" %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= post_comment.comment %>
+                  </td>
+                  <td>
+                    <%= link_to "Destroy", admin_post_post_comment_path(@post, post_comment), method: :delete, local: true, class: "btn btn-danger" %>
+                  </td>
+                  <td>
+                    <%= post_comment.created_at.strftime("%Y/%m/%d") %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
