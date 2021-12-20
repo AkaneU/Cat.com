@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col offset-1">
+      <h3>お問い合わせ</h3>
+      <% if @inquiries.blank? %>
+        <p class="text-center">お問い合わせはありません</p>
+      <% else %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>問い合わせした人</th>
+              <th>メールアドレス</th>
+              <th>問い合わせタイトル</th>
+              <th></th>
+            </tr>
+          </thead>
+          <% @inquiries.each do |inquiry| %>
+            <tbody>
+              <tr>
+                <td><%= inquiry.name %></td>
+                <td><%= inquiry.email %></td>
+                <td><%= inquiry.title %></td>
+                <td>
+                  <%= link_to "詳細へ", admin_inquiry_path(inquiry), class: "btn btn-success" %>
+                </td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>
