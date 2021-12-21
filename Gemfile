@@ -75,3 +75,8 @@ gem 'kaminari'
 gem 'enum_help'
 gem 'pry-byebug'
 gem 'acts-as-taggable-on', '~> 6.0'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
