@@ -1,4 +1,4 @@
-<% @posts.each do |post| %>
+<% posts.each do |post| %>
   <div class="card">
     <% post.image_files.first(1).each do |image| %>
       <%= attachment_image_tag image, :image, size: "550x450", class: "card-img-top" %>

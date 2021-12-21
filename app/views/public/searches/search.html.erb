@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="list-group text-center">
+        <%= link_to "Timeline", timeline_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Popular", popular_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "New", posts_new_posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Search", posts_path, class: "list-group-item list-group-item-action active" %>
+        <%= link_to "Create post", new_post_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your favorite posts", posts_favorited_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action" %>
+      </div>
+    </div>
+    <div class="col offset-1">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Search</h3>
+          <%= form_with url: search_result_path, method: :get, local: true do |f| %>
+            <%= f.text_area 'content', class: "form-control" %>
+            <%= f.select 'model', options_for_select({"ユーザー" => "end_user", "投稿" => "post"}), class: "form-control" %>
+            <%= f.submit "検索", class: "btn btn-success" %>
+          <% end %>
+          <br>
+          <h4>人気のタグ</h4>
+          <% @tags.each do |tag| %>
+            <%= link_to "#{tag.name}(#{tag.taggings_count})", post_path(tag.name) %>
+            &nbsp;
+          <% end %>
+          <%= link_to "...check all tag", tags_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

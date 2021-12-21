@@ -58,6 +58,11 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index], module: :public
 
+  get 'searches/search_result' => "public/searches#search_result", as: "search_result"
+  get 'searches/search' => "public/searches#search", as: "search"
+  get 'searches/all_tags' => "public/searches#all_tags", as: "tags"
+
+
 end
 
 
