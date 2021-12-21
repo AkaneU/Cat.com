@@ -39,16 +39,8 @@
                 <% end %>
               </div>
               <div class="row">
-                <div class="col-auto">
-                  <% if @post.favorited_by?(current_end_user) %>
-                    <%= link_to post_favorites_path(@post), method: :delete, class: "text-danger" do %>
-                      ♥<%= @post.favorites.count %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to post_favorites_path(@post), method: :post do %>
-                      ♥<%= @post.favorites.count %>
-                    <% end %>
-                  <% end %>
+                <div class="col-auto" id="favorite_btn_<%= @post.id %>">
+                  <%= render "favorites/favorite_btn", post: @post %>
                 </div>
                 <div class="col">
                   <%= @post.created_at.strftime("%Y/%m/%d") %>
