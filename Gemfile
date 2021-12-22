@@ -63,6 +63,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+
 gem 'devise'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
@@ -75,6 +76,7 @@ gem 'kaminari'
 gem 'enum_help'
 gem 'pry-byebug'
 gem 'acts-as-taggable-on', '~> 6.0'
+
 
 gem 'dotenv-rails'
 group :production do
