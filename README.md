@@ -21,6 +21,12 @@
 日々の空き時間などに、猫を見て癒されたりしたい時に。その他にもかわいい猫モチーフの商品の情報やおすすめの猫カフェなどの知りたい時や、共有したい時に。
 
 ### 設計書
+- ER図
+![ER図-修正後 drawio](https://user-images.githubusercontent.com/91734937/145944591-2d79b335-3103-4b2e-ac8f-d6d2987b657a.png)
+- テーブル設計書
+https://docs.google.com/spreadsheets/d/1Jfpnw6N95lbnpoUhiPUZll5k6sfc4BKdVxGQzflcJqY/edit#gid=1911453102
+- アプリケーション修正詳細設計
+https://docs.google.com/spreadsheets/d/1Xj4k_ziwoxyCnGxDlNDrCjDtwSS18tudgeIg0_yuKlw/edit#gid=1779024384
 
 
 ## チャレンジ要素一覧

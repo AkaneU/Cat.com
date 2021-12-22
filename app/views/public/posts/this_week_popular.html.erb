@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="list-group text-center">
+        <%= link_to "Timeline", timeline_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Popular", popular_path, class: "list-group-item list-group-item-action active" %>
+        <%= link_to "New", posts_new_posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Search", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Create post", new_post_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your favorite posts", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action" %>
+      </div>
+    </div>
+    <div class="col offset-1">
+      <ur class="nav nav-tabs">
+        <%= link_to "今週", popular_path, class: "nav-link active" %>
+        <%= link_to "今月", this_month_popular_path, class: "nav-link" %>
+        <%= link_to "先月", last_month_popular_path, class: "nav-link" %>
+      </ur>
+      <br>
+      <% if @posts.blank? %>
+        <div class="text-center">
+          <p>投稿がありません</p>
+        </div>
+      <% else %>
+        <%= render 'list_of_post', posts: @posts %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,24 @@
+<h3>検索ワード "<%= @content %>" のユーザー</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ユーザー名</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% end_users.each do |end_user| %>
+    <tbody>
+      <tr>
+        <td>
+          <%= attachment_image_tag end_user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "40x40", class: "circle" %>
+
+          <%= end_user.name %>
+        </td>
+        <td>
+          <%= link_to "詳細へ", end_user_path(end_user), class: "btn btn-success" %>
+        </td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+

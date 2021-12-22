@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title">User info</h3>
+  </div>
+  <div class="row">
+    <div class="col-3 offset-1">
+      <%= attachment_image_tag end_user, :profile_image, fallback: "no_image.jpg", class: "circle"%>
+      <br>
+      <%= end_user.name %>
+    </div>
+    <div class="col-7">
+      <table class="table-borderless">
+        <tbody>
+          <tr>
+            <th>
+              <%= link_to end_user_followings_path(end_user.id) do %>
+                <%= end_user.followings.count %> follows
+              <% end %>
+            </th>
+            <th>
+              <%= link_to end_user_followers_path(end_user.id) do %>
+                <%= end_user.followers.count %> followers
+              <% end %>
+            </th>
+          </tr>
+          <tr>
+            <th>26posts</th>
+            <th></th>
+          </tr>
+          <tr>
+            <th>
+              <% if current_end_user.following?(end_user) %>
+                <%= link_to "フォローを外す", end_user_relationships_path(end_user), method: :delete, class: "btn btn-info" %>
+              <% else %>
+                <%= link_to "フォローする", end_user_relationships_path(end_user), method: :post, class: "btn btn-success" %>
+              <% end %>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
+<h4>最近の投稿</h4>
+<div class="row no-gutters">
+  <% @recent_posts.each do |post| %>
+    <div class="card mr-2 my-2">
+      <% post.image_files.first(1).each do |image| %>
+        <%= link_to post_path(post) do %>
+          <%= attachment_image_tag image, :image, size: "230x230" %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4 offset-4">
+      <div class="card">
+        <div class="card-body">
+        <h2 class="card-title">Sign up</h2>
+          <%= form_with model: @end_user, url: end_user_registration_path, local: true do |f| %>
+            <%= render "public/shared/error_messages", resource: resource %>
+
+            <div class="row">
+              <div class="col">
+                <%= f.label :name %><br>
+                <%= f.text_field :name, autofocus: true %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <%= f.label :password %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "new-password" %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <%= f.submit "Sign up", class: "btn btn-outline-info text-right" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
