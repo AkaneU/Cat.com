@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+  <p class="text-center"><%= flash[:notice] %></p>
+<% end %>
 <ur class="nav nav-tabs">
   <%= link_to "Info", end_user_path(end_user), class: "nav-link active" %>
   <div class="nav-link">

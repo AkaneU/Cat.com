@@ -19,6 +19,7 @@
       <br>
       <% if @notifications.exists? %>
         <%= render @notifications %>
+        <%= paginate @posts %>
       <% else %>
         <p class="text-center">通知はありません</p>
       <% end %>

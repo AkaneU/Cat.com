@@ -76,6 +76,7 @@ gem 'kaminari'
 gem 'enum_help'
 gem 'pry-byebug'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'rails-i18n'
 
 
 gem 'dotenv-rails'
