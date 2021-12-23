@@ -12,6 +12,9 @@
       </div>
     </div>
     <div class="col offset-1">
+      <% if flash[:notice] %>
+        <p class="text-center"><%= flash[:notice] %></p>
+      <% end %>
       <div class="card">
         <div class="row g-0">
           <div class="col-8">

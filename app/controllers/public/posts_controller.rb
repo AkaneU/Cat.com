@@ -1,15 +1,15 @@
 class Public::PostsController < ApplicationController
 
   def index
-    @posts = Post.where(end_user_id: current_end_user.id)
+    @posts = Post.where(end_user_id: current_end_user.id).page(params[:page]).per(10)
   end
 
   def timeline
-    @posts = Post.where(end_user_id: [current_end_user.id, *current_end_user.following_ids])
+    @posts = Post.where(end_user_id: [current_end_user.id, *current_end_user.following_ids]).page(params[:page]).per(10)
   end
 
   def new_posts
-    @posts = Post.order(created_at: :desc)
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def this_week_popular
@@ -51,6 +51,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user = current_end_user
     if @post.save
+      flash[:notice] = "投稿が完了しました"
       redirect_to post_path(@post)
     else
       render :new
@@ -64,6 +65,7 @@ class Public::PostsController < ApplicationController
   def update
     @post =Post.find(params[:id])
     @post.update(post_params)
+    flash[:notice] = "投稿が編集されました"
     redirect_to post_path(@post)
   end
 

@@ -17,7 +17,7 @@
           <h3 class="card-title">Edit post</h3>
           <% if @post.errors.any? %>
             <div class="error_message">
-              <%= @post.errors.count %> error prohibited this obj from being saved:
+              <%= @post.errors.count %>件のエラーがあります：
               <% @post.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
               <% end %>

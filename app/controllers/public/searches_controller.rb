@@ -7,7 +7,7 @@ class Public::SearchesController < ApplicationController
   def search_result
     @model = params["model"]
     @content = params["content"]
-    @records = search_for(@model, @content)
+    @records = search_for(@model, @content).page(params[:page]).per(10)
   end
 
   def all_tags

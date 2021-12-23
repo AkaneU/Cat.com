@@ -21,6 +21,7 @@
           <p class="text-center">検索ワード "<%= @content %>" の投稿はありません</p>
         <% else %>
           <%= render 'public/posts/list_of_post', posts: @records %>
+          <%= paginate @records %>
         <% end %>
       <% end %>
     </div>

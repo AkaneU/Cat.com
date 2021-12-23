@@ -20,6 +20,8 @@ class EndUser < ApplicationRecord
 
   attachment :profile_image
 
+  validates :name, uniqueness: true, length: { minimum: 2, maximum: 20 }
+
   def follow(end_user_id)
     relationships.create(followed_id: end_user_id)
   end
