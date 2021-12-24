@@ -14,23 +14,23 @@ class Public::PostsController < ApplicationController
 
   def this_week_popular
     @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.all_week}).group(:post_id).order(favorites_count: :desc).limit(50)
-      @posts.each do |post|
-        post = Post.includes(:image_files)
-      end
+    @posts.each do |post|
+      post = Post.includes(:image_files)
+    end
   end
 
   def this_month_popular
-     @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.all_month}).group(:post_id).order(favorites_count: :desc).limit(50)
-      @posts.each do |post|
-        post = Post.includes(:image_files)
-      end
+    @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.all_month}).group(:post_id).order(favorites_count: :desc).limit(50)
+    @posts.each do |post|
+      post = Post.includes(:image_files)
+    end
   end
 
   def last_month_popular
-     @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.last_month.all_month}).group(:post_id).order(favorites_count: :desc).limit(50)
-      @posts.each do |post|
-        post = Post.includes(:image_files)
-      end
+    @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.last_month.all_month}).group(:post_id).order(favorites_count: :desc).limit(50)
+    @posts.each do |post|
+      post = Post.includes(:image_files)
+    end
   end
 
   def favorited
