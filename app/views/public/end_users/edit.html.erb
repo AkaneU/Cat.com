@@ -15,10 +15,10 @@
       <div class="card">
         <div class="card-body">
           <h3 class="card-title">Your info</h3>
-          <% if @post.errors.any? %>
+          <% if @end_user.errors.any? %>
             <div class="error_message">
-              <%= @post.errors.count %>件のエラーがあります：
-              <% @post.errors.full_messages.each do |message| %>
+              <%= @end_user.errors.count %>件のエラーがあります：
+              <% @end_user.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
               <% end %>
             </div>

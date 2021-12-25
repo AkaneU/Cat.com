@@ -12,6 +12,10 @@ class Public::PostsController < ApplicationController
     @posts = Post.order(created_at: :desc).page(params[:page]).per(10)
   end
 
+  def posts_with_tag
+    @posts =Post.tagged_with(params[:id]).page(params[:page]).per(10)
+  end
+
   def this_week_popular
     @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.all_week}).group(:post_id).order(favorites_count: :desc).limit(50).page(params[:page]).per(10)
     @posts.each do |post|

@@ -23,7 +23,7 @@
           <br>
           <h4>人気のタグ</h4>
           <% @tags.each do |tag| %>
-            <%= link_to "#{tag.name}(#{tag.taggings_count})", post_path(tag.name) %>
+            <%= link_to "#{tag.name}(#{tag.taggings_count})", tag_path(tag.name) %>
             &nbsp;
           <% end %>
           <%= link_to "...check all tag", tags_path %>

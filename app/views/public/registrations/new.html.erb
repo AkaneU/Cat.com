@@ -4,14 +4,19 @@
       <div class="card">
         <div class="card-body">
           <h2 class="card-title">Sign up</h2>
-          <%= flash[:alert] %>
+          <% if flash[:notice] %>
+            <%= flash[:alert] %>
+          <% end %>
+          <% if flash[:notice] %>
+            <%= flash[:notice].html_safe %>
+          <% end %>
           <%= form_with model: @end_user, url: end_user_registration_path, local: true do |f| %>
             <%= render "public/shared/error_messages", resource: resource %>
 
             <div class="row">
               <div class="col">
-                <%= f.label :name %><br>
-                <%= f.text_field :name, autofocus: true %>
+                <label for="inputName">ユーザー名<br>
+                <%= f.text_field :name, id: "inputName", autofocus: true %>
               </div>
             </div>
 

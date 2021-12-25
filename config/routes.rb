@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get 'posts/new_posts' => "public/posts#new_posts"
   get 'posts/timeline' => "public/posts#timeline", as: "timeline"
   get 'posts/favorited' => "public/posts#favorited"
+  get 'posts/tag/:id' => "public/posts#posts_with_tag", as: "tag"
   scope module: :public do
     resources :posts do
       resources :post_comments, only: [:create, :destroy]
