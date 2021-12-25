@@ -1,0 +1,34 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+ Exclude:
+  - "vendor/**/*"
+  - "db/**/*"
+  - "config/**/*"
+  - "bin/*"
+  - "node_modules/**/*"
+  - "Gemfile"
+  - ".git/**/*"
+  - "app/channels/**/*"
+  - "app/mailers/**/*"
+  - "app/jobs/**/*"
+
+ Style/AsciiComments:
+  Enabled: false
+
+ Metrics/PerceivedComplexity:
+  Max: 8
+
+ Metrics/BlockNesting:
+  Max: 3
+
+ Style/MultilineBlockLayout:
+  Enabled: false
+
+ Style/AccessModifierIndentation:
+  Enabled: false

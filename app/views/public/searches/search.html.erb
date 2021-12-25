@@ -5,7 +5,7 @@
         <%= link_to "Timeline", timeline_path, class: "list-group-item list-group-item-action" %>
         <%= link_to "Popular", popular_path, class: "list-group-item list-group-item-action" %>
         <%= link_to "New", posts_new_posts_path, class: "list-group-item list-group-item-action" %>
-        <%= link_to "Search", posts_path, class: "list-group-item list-group-item-action active" %>
+        <%= link_to "Search", search_path, class: "list-group-item list-group-item-action active" %>
         <%= link_to "Create post", new_post_path, class: "list-group-item list-group-item-action" %>
         <%= link_to "Your favorite posts", posts_favorited_path, class: "list-group-item list-group-item-action" %>
         <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action" %>
@@ -23,7 +23,7 @@
           <br>
           <h4>人気のタグ</h4>
           <% @tags.each do |tag| %>
-            <%= link_to "#{tag.name}(#{tag.taggings_count})", post_path(tag.name) %>
+            <%= link_to "#{tag.name}(#{tag.taggings_count})", tag_path(tag.name) %>
             &nbsp;
           <% end %>
           <%= link_to "...check all tag", tags_path %>

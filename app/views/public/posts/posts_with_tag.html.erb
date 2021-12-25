@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="list-group text-center">
+        <%= link_to "Timeline", timeline_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Popular", popular_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "New", posts_new_posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Search", search_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Create post", new_post_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your favorite posts", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action" %>
+      </div>
+    </div>
+    <div class="col offset-1">
+      <%= render 'list_of_post', posts: @posts %>
+      <%= paginate @posts %>
+    </div>
+  </div>
+</div>

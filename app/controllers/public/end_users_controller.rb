@@ -4,6 +4,11 @@ class Public::EndUsersController < ApplicationController
     @recent_posts = @end_user.posts.first(3)
   end
 
+  def end_user_posts
+  end_user = EndUser.find(params[:id])
+    @posts = end_user.posts.page(params[:page]).per(10)
+  end
+
   def edit
     @end_user = EndUser.find(params[:id])
   end

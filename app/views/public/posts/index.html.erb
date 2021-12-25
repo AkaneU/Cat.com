@@ -19,6 +19,7 @@
       <% else %>
         <%= render 'list_of_post', posts: @posts %>
       <% end %>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>

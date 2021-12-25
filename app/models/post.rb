@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
 
   belongs_to :end_user
-  has_many :image_files
+  has_many :image_files, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
@@ -10,6 +10,11 @@ class Post < ApplicationRecord
 
   acts_as_taggable_on :tags
   acts_as_taggable_on :skills, :interests
+
+  validates :title, presence: true, length: { maximum: 50}
+  validates :text, presence: true, length: { maximum: 200}
+  validates :image_files, presence: true
+
 
   def favorited_by?(end_user)
     favorites.where(end_user_id: end_user.id).exists?

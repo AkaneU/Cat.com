@@ -1,41 +1,44 @@
 class Public::PostsController < ApplicationController
 
   def index
-    @posts = Post.where(end_user_id: current_end_user.id)
+    @posts = Post.where(end_user_id: current_end_user.id).page(params[:page]).per(10)
   end
 
   def timeline
-    @posts = Post.where(end_user_id: [current_end_user.id, *current_end_user.following_ids])
+    @posts = Post.where(end_user_id: [current_end_user.id, *current_end_user.following_ids]).page(params[:page]).per(10)
   end
 
   def new_posts
-    @posts = Post.order(created_at: :desc)
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(10)
+  end
+
+  def posts_with_tag
+    @posts =Post.tagged_with(params[:id]).page(params[:page]).per(10)
   end
 
   def this_week_popular
-    @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.all_week}).group(:post_id).order('count(end_user_id) desc').limit(50)
-      @posts.each do |post|
-        post = Post.includes(:image_files)
-      end
+    @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.all_week}).group(:post_id).order(favorites_count: :desc).limit(50).page(params[:page]).per(10)
+    @posts.each do |post|
+      post = Post.includes(:image_files)
+    end
   end
 
   def this_month_popular
-     @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.all_month}).group(:post_id).order('count(end_user_id) desc').limit(50)
-      @posts.each do |post|
-        post = Post.includes(:image_files)
-      end
+    @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.all_month}).group(:post_id).order(favorites_count: :desc).limit(50).page(params[:page]).per(10)
+    @posts.each do |post|
+      post = Post.includes(:image_files)
+    end
   end
 
   def last_month_popular
-     @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.last_month.all_month}).group(:post_id).order('count(end_user_id) desc').limit(50)
-      @posts.each do |post|
-        post = Post.includes(:image_files)
-      end
+    @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.last_month.all_month}).group(:post_id).order(favorites_count: :desc).limit(50).page(params[:page]).per(10)
+    @posts.each do |post|
+      post = Post.includes(:image_files)
+    end
   end
 
   def favorited
-    favorites = Favorite.where(end_user_id: current_end_user.id).pluck(:post_id)
-    @posts = Post.find(favorites)
+    @posts = Post.where(favorites: current_end_user.favorites).page(params[:page]).per(10)
   end
 
   def show
@@ -51,6 +54,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user = current_end_user
     if @post.save
+      flash[:notice] = "投稿が完了しました"
       redirect_to post_path(@post)
     else
       render :new
@@ -64,13 +68,17 @@ class Public::PostsController < ApplicationController
   def update
     @post =Post.find(params[:id])
     @post.update(post_params)
+    flash[:notice] = "投稿が編集されました"
     redirect_to post_path(@post)
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to timeline_path
   end
 
-  
+
   private
 
   def post_params

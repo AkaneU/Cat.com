@@ -1,6 +1,16 @@
+<% if flash[:notice] %>
+  <p class="text-center"><%= flash[:notice] %></p>
+<% end %>
 <ur class="nav nav-tabs">
   <%= link_to "Info", end_user_path(end_user), class: "nav-link active" %>
-  <%= link_to "Notice", notifications_path, class: "nav-link" %>
+  <div class="nav-link">
+    <%= link_to "Notice", notifications_path %>
+    <% if unchecked_notifications.any? %>
+      <div class="badge bg-info text-light">
+        <%= unchecked_notifications.count %>
+      </div>
+    <% end %>
+  </div>
 </ur>
 <br>
 <div class="card">
