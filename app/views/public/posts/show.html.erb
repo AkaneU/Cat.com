@@ -5,7 +5,7 @@
         <%= link_to "Timeline", timeline_path, class: "list-group-item list-group-item-action" %>
         <%= link_to "Popular", popular_path, class: "list-group-item list-group-item-action" %>
         <%= link_to "New", posts_new_posts_path, class: "list-group-item list-group-item-action" %>
-        <%= link_to "Search", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Search", search_path, class: "list-group-item list-group-item-action" %>
         <%= link_to "Create post", new_post_path, class: "list-group-item list-group-item-action" %>
         <%= link_to "Your favorite posts", posts_favorited_path, class: "list-group-item list-group-item-action" %>
         <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action" %>
@@ -74,6 +74,13 @@
                 <div class="col">
                   <%= @post.created_at.strftime("%Y/%m/%d") %>
                 </div>
+              </div>
+              <div class="row">
+                <% if @post.end_user == current_end_user %>
+                  <%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %>
+                  &nbsp;
+                  <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-danger" %>
+                <% end %>
               </div>
             </div>
           </div>

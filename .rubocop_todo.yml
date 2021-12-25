@@ -201,3 +201,23 @@ Style/WordArray:
 Layout/LineLength:
   Max: 200
 
+# Offense count: 1
+# Cop supports --auto-correct.
+Layout/EmptyLineAfterGuardClause:
+  Exclude:
+    - 'app/controllers/public/sessions_controller.rb'
+
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: EmptyLineBetweenMethodDefs, EmptyLineBetweenClassDefs, EmptyLineBetweenModuleDefs, AllowAdjacentOneLineDefs, NumberOfEmptyLines.
+Layout/EmptyLineBetweenDefs:
+  Exclude:
+    - 'app/models/end_user.rb'
+
+# Offense count: 9
+# Cop supports --auto-correct.
+Layout/EmptyLines:
+  Exclude:
+    - 'app/controllers/public/posts_controller.rb'
+    - 'app/models/end_user.rb'
+    - 'app/models/post.rb'

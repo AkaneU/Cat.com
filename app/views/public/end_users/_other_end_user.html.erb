@@ -24,7 +24,11 @@
             </th>
           </tr>
           <tr>
-            <th>26posts</th>
+            <th>
+              <%= link_to other_end_user_path(end_user) do %>
+                <%= end_user.posts.count %>posts
+              <% end %>
+            </th>
             <th></th>
           </tr>
           <tr>

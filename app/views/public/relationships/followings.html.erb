@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="list-group text-center">
+        <%= link_to "Timeline", timeline_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Popular", popular_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "New", posts_new_posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Search", search_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Create post", new_post_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your favorite posts", posts_path, class: "list-group-item list-group-item-action" %>
+        <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action" %>
+      </div>
+    </div>
+    <div class="col offset-1">
+      <h2>Follow Users</h2>
+      <br>
+      <% if @end_users.blank? %>
+        <p class="text-center">ユーザーはいません</p>
+      <% else %>
+        <% @end_users.each do |end_user| %>
+          <div class="card mr-2 my-2">
+            <div class="card-body">
+              <h5 class="card-title"><%= end_user.name %></h5>
+            </div>
+            <div class="row">
+              <div class="col">
+                <%= attachment_image_tag end_user, :profile_image, fallback: "no_image.jpg", width: "50%", height: "50%", class: "circle"%>
+              </div>
+              <div class="col">
+                <%= end_user.followings.count %> followings
+                <%= end_user.followers.count %> followers
+                <%= link_to "詳細", end_user_path(end_user), class: "btn btn-info" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

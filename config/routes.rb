@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   patch 'end_users/withdrawal' => "public/end_users#withdrawal", as: "withdrawal"
   get 'end_users/check' => "public/end_users#check", as: "check"
+  get 'end_users/:id/end_user_posts' => "public/end_users#end_user_posts", as: "other_end_user"
   scope module: :public do
     resources :end_users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]

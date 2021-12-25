@@ -4,9 +4,35 @@
       <div class="card">
         <div class="row g-0">
           <div class="col-8">
-            <% @post.image_files.each do |image| %>
-              <%= attachment_image_tag image, :image, size: "500x450" %>
-            <% end %>
+            <div  class="carousel slide" id="post_image" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#post_image" data-slide-to="0" class="active"></li>
+                <% @post.image_files.drop(1).count.times do |index| %>
+                  <li data-target="#post_image" data-slide-to="#{index}"></li>
+                <% end %>
+              </ol>
+
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <% @post.image_files.first(1).each do |image| %>
+                    <%= attachment_image_tag image, :image, size: "500x450", class: "carousel_image"  %>
+                  <% end %>
+                </div>
+                <% @post.image_files.drop(1).each do |image| %>
+                  <div class="carousel-item">
+                    <%= attachment_image_tag image, :image, size: "500x450", class: "carousel_image" %>
+                  </div>
+                <% end %>
+              </div>
+              <a href="#post_image" class="carousel-control-prev" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="sr-only">前へ</span>
+              </a>
+              <a href="#post_image" class="carousel-control-next" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                <span class="sr-only">次へ</span>
+              </a>
+　　　　　　</div>
           </div>
           <div class="col-4">
             <div class="card-body">
