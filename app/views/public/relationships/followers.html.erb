@@ -17,27 +17,36 @@
       <% if @end_users.blank? %>
         <p class="text-center">ユーザーはいません</p>
       <% else %>
-        <div class="col-6 mr-2 my-2">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ユーザー名</th>
+              <th>followers</th>
+              <th>followings</th>
+              <th></th>
+            </tr>
+          </thead>
           <% @end_users.each do |end_user| %>
-            <div class="card mr-2 my-2">
-              <div class="card-body">
-                <h5 class="card-title"><%= end_user.name %></h5>
-                <div class="row">
-                  <div class="col">
-                    <%= attachment_image_tag end_user, :profile_image, fallback: "no_image.jpg", width: "80%", height: "80%", class: "circle"%>
-                  </div>
-                  <div class="col">
-                    <%= end_user.followings.count %> followings
-                    <br>
-                    <%= end_user.followers.count %> followers
-                    <br>
-                    <%= link_to "詳細", end_user_path(end_user), class: "btn btn-info" %>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <tbody>
+              <tr>
+                <td>
+                  <%= attachment_image_tag end_user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "40x40", class: "circle" %>
+
+                  <%= end_user.name %>
+                </td>
+                <td>
+                  <%= end_user.followers.count %>
+                </td>
+                <td>
+                  <%= end_user.followings.count %>
+                </td>
+                <td>
+                  <%= link_to "詳細へ", end_user_path(end_user), class: "btn btn-success" %>
+                </td>
+              </tr>
+            </tbody>
           <% end %>
-        </div>
+        </table>
       <% end %>
     </div>
   </div>
