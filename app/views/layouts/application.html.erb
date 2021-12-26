@@ -12,15 +12,15 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-light">
+    <header class="sticky-top">
+      <nav class="navbar navbar-light bg-dark">
         <a class="navbar-brand text-white" href="/">
           <%= image_tag 'Catcom_logo.jpg' , width: "25%", height: "25%" %>
         </a>
-        <div class="col text-right">
+        <div class="col text-right text-light">
           <% if end_user_signed_in? %>
             Hello, <%= current_end_user.name %>!
-            <%= image_tag 'catlogo_2.png', size: "65x25" %>
+            <%= image_tag 'catlogo_3.png', size: "65x25" %>
           <% end %>
         </div>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,49 +31,49 @@
             <li class="nav-item">
               <% if admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to admin_end_users_path do %>
+                  <%= link_to admin_end_users_path, class: "text-light" do %>
                     <i class="fas fa-users"></i> Users
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to admin_posts_path do %>
+                  <%= link_to admin_posts_path, class: "text-light" do %>
                     <i class="fas fa-cat"></i> Posts
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to destroy_admin_session_path, method: :delete do %>
+                  <%= link_to destroy_admin_session_path, method: :delete, class: "text-light" do %>
                     <i class="fas fa-sign-out-alt"></i> Log out
                   <% end %>
                 </li>
               <% elsif end_user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to end_user_path(current_end_user) do %>
+                  <%= link_to end_user_path(current_end_user), class: "text-light" do %>
                     <i class="fas fa-user"></i> Your info
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to notifications_path do %>
+                  <%= link_to notifications_path, class: "text-light" do %>
                     <i class="fas fa-bell"></i> Notification
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to new_inquiry_path do %>
+                  <%= link_to new_inquiry_path, class: "text-light" do %>
                     <i class="fas fa-paper-plane"></i> Contact us
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to destroy_end_user_session_path, method: :delete do %>
+                  <%= link_to destroy_end_user_session_path, method: :delete, class: "text-light" do %>
                     <i class="fas fa-sign-out-alt"></i> Log out
                   <% end %>
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to new_end_user_registration_path do %>
+                  <%= link_to new_end_user_registration_path, class: "text-light" do %>
                     <i class="fas fa-user-plus"></i> Sign up
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to new_end_user_session_path do %>
+                  <%= link_to new_end_user_session_path, class: "text-light" do %>
                     <i class="fas fa-sign-in-alt"></i> Log in
                   <% end %>
                 </li>
@@ -86,7 +86,7 @@
     <br>
     <%= yield %>
     <br>
-    <footer>
+    <footer class="fixed-bottom  bg-dark">
       <div class="container">
         <div class="row">
           <div class="mx-auto">

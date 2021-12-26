@@ -17,21 +17,21 @@ class Public::PostsController < ApplicationController
   end
 
   def this_week_popular
-    @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.all_week}).group(:post_id).order(favorites_count: :desc).limit(50).page(params[:page]).per(10)
+    @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.all_week}).group(:post_id).order(favorited_end_users: :desc).limit(50).page(params[:page]).per(10)
     @posts.each do |post|
       post = Post.includes(:image_files)
     end
   end
 
   def this_month_popular
-    @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.all_month}).group(:post_id).order(favorites_count: :desc).limit(50).page(params[:page]).per(10)
+    @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.all_month}).group(:post_id).order(favorited_end_users: :desc).limit(50).page(params[:page]).per(10)
     @posts.each do |post|
       post = Post.includes(:image_files)
     end
   end
 
   def last_month_popular
-    @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.last_month.all_month}).group(:post_id).order(favorites_count: :desc).limit(50).page(params[:page]).per(10)
+    @posts = Post.joins(:favorites).where(favorites: {created_at: Time.current.last_month.all_month}).group(:post_id).order(favorited_end_users: :desc).limit(50).page(params[:page]).per(10)
     @posts.each do |post|
       post = Post.includes(:image_files)
     end
