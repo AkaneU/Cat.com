@@ -19,35 +19,39 @@
   </div>
   <div class="row">
     <div class="col-3 offset-1">
-      <%= attachment_image_tag end_user, :profile_image, fallback: "no_image.jpg", class: "circle"%>
+      <%= attachment_image_tag end_user, :profile_image, size: "150x150", fallback: "no_image.jpg", class: "circle"%>
       <br>
-      <%= link_to end_user_followings_path(end_user.id) do %>
-        <%= end_user.followings.count %> follows
-      <% end %>
-      <br>
-      <%= link_to end_user_followers_path(end_user.id) do %>
-        <%= end_user.followers.count %> followers
-      <% end %>
+      <div class="text-center my-1">
+        <%= link_to end_user_followings_path(end_user.id) do %>
+          <%= end_user.followings.count %> follows
+        <% end %>
+        <br>
+        <%= link_to end_user_followers_path(end_user.id) do %>
+          <%= end_user.followers.count %> followers
+        <% end %>
+      </div>
     </div>
-    <div class="col-7">
-      <table class="table-borderless">
-        <tbody>
-          <tr>
-            <th>Username</th>
-            <th><%= end_user.name %></th>
-          </tr>
-          <tr>
-            <th>Email</th>
-            <th><%= end_user.email %></th>
-          </tr>
-          <tr>
-            <th><%= link_to "ユーザー情報編集", edit_end_user_path(@end_user), class: "btn btn-secondary" %></th>
-          </tr>
-          <tr>
-            <th><%= link_to "アカウント削除", check_path, class: "btn btn-danger" %></th>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-6 offset-1">
+      <div class="row my-2">
+        <div class="col-auto">
+          Username : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= end_user.name %>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col-auto">
+          Email : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= end_user.email %>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col">
+          <%= link_to "ユーザー情報編集", edit_end_user_path(@end_user), class: "btn btn-secondary btn-block my-1" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= link_to "アカウント削除", check_path, class: "btn btn-danger btn-block my-1" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -4,44 +4,40 @@
   </div>
   <div class="row">
     <div class="col-3 offset-1">
-      <%= attachment_image_tag end_user, :profile_image, fallback: "no_image.jpg", class: "circle"%>
+      <%= attachment_image_tag end_user, :profile_image, size: "150x150", fallback: "no_image.jpg", class: "circle"%>
       <br>
-      <%= end_user.name %>
+      <div class="text-center my-1">
+        <strong><%= end_user.name %></strong>
+      </div>
     </div>
-    <div class="col-7">
-      <table class="table-borderless">
-        <tbody>
-          <tr>
-            <th>
-              <%= link_to end_user_followings_path(end_user.id) do %>
-                <%= end_user.followings.count %> follows
-              <% end %>
-            </th>
-            <th>
-              <%= link_to end_user_followers_path(end_user.id) do %>
-                <%= end_user.followers.count %> followers
-              <% end %>
-            </th>
-          </tr>
-          <tr>
-            <th>
-              <%= link_to other_end_user_path(end_user) do %>
-                <%= end_user.posts.count %>posts
-              <% end %>
-            </th>
-            <th></th>
-          </tr>
-          <tr>
-            <th>
-              <% if current_end_user.following?(end_user) %>
-                <%= link_to "フォローを外す", end_user_relationships_path(end_user), method: :delete, class: "btn btn-info" %>
-              <% else %>
-                <%= link_to "フォローする", end_user_relationships_path(end_user), method: :post, class: "btn btn-success" %>
-              <% end %>
-            </th>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-5 offset-1">
+      <br>
+      <div class="row my-3">
+        <div class="col-auto">
+          <%= link_to end_user_followings_path(end_user.id) do %>
+            <%= end_user.followings.count %> follows
+          <% end %>
+        </div>
+        <div class="col-auto offset-1">
+          <%= link_to end_user_followers_path(end_user.id) do %>
+            <%= end_user.followers.count %> followers
+          <% end %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-auto">
+        <%= link_to other_end_user_path(end_user) do %>
+          <%= end_user.posts.count %>posts
+        <% end %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <% if current_end_user.following?(end_user) %>
+          <%= link_to "フォローを外す", end_user_relationships_path(end_user), method: :delete, class: "btn btn-info btn-block" %>
+        <% else %>
+          <%= link_to "フォローする", end_user_relationships_path(end_user), method: :post, class: "btn btn-success btn-block" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
