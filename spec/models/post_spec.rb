@@ -12,6 +12,10 @@ RSpec.describe 'Postモデルのテスト', type: :model do
         post.title = ''
         is_expected.to eq false
       end
+      it '50文字以下であること: 51文字は×' do
+        post.title = Faker::Lorem.characters(number: 51)
+        is_expected.to eq false
+      end
     end
 
     context 'textカラム' do

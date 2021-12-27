@@ -17,6 +17,12 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
  .circle {
   border: 3px solid #999;
   border-radius: 50%;

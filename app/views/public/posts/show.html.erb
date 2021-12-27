@@ -52,36 +52,37 @@
           <% end %>
           &nbsp;
           <%= @post.end_user.name %>
-          <div class="row">
-            <%= @post.title %>
-            <br>
-            <%= @post.text %>
-          </div>
-          <br>
-          <div class="row">
-            <% @post.tag_list.each do |tag| %>
-              <%= link_to tag_path(tag) do %>
-                #<%= tag %>
-              <% end %>
-               &nbsp;
-            <% end %>
-          </div>
-          <div class="row">
-            <div class="favorite_btn_<%= @post.id %>">
-              <%= render "public/favorites/favorite", post: @post %>
+          <div class="row my-2">
+            <div class="col-10">
+              <%= @post.title %>
+              <br>
+              <%= @post.text %>
+              <div class="row my-2">
+                <% @post.tag_list.each do |tag| %>
+                  <%= link_to tag_path(tag) do %>
+                    #<%= tag %>
+                  <% end %>
+                   &nbsp;
+                <% end %>
+              </div>
+              <div class="row">
+                <div class="favorite_btn_<%= @post.id %>">
+                  <%= render "public/favorites/favorite", post: @post %>
+                </div>
+                <div class="col">
+                  <%= @post.created_at.strftime("%Y/%m/%d") %>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <% if @post.end_user == current_end_user %>
+                  <%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %>
+                  &nbsp;
+                  &nbsp;
+                  <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-danger" %>
+                <% end %>
+              </div>
             </div>
-            <div class="col">
-              <%= @post.created_at.strftime("%Y/%m/%d") %>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <% if @post.end_user == current_end_user %>
-              <%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %>
-              &nbsp;
-              &nbsp;
-              <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-danger" %>
-            <% end %>
           </div>
         </div>
       </div>
