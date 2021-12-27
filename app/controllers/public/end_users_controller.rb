@@ -1,5 +1,4 @@
 class Public::EndUsersController < ApplicationController
-  before_action :ensure_end_user, only: [:edit, :update]
 
   def show
     @end_user = EndUser.find(params[:id])
@@ -39,11 +38,6 @@ class Public::EndUsersController < ApplicationController
   end
 
   private
-
-  def ensure_end_user
-    @end_user != current_end_user
-    redirect_to end_user_path(current_end_user)
-  end
 
   def end_user_params
     params.require(:end_user).permit(:name, :email, :profile_image)

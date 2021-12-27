@@ -1,5 +1,4 @@
 class Public::PostsController < ApplicationController
-  before_action :ensure_end_user, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.where(end_user_id: current_end_user.id).page(params[:page]).per(10)
@@ -75,25 +74,33 @@ class Public::PostsController < ApplicationController
 
   def update
     @post =Post.find(params[:id])
-    @post.update(post_params)
-    flash[:notice] = "投稿が編集されました"
-    redirect_to post_path(@post)
+    if @post.end_user == current_end_user
+      if @post.update(post_params)
+        flash[:notice] = "投稿が編集されました"
+        redirect_to post_path(@post)
+      else
+        redirect_to posts_path
+      end
+    else
+      redirect_to timeline
+    end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to timeline_path
+    if @post.end_user == current_end_user
+      if @post.destroy
+        redirect_to timeline_path
+      else
+        redirect_to timeline_path
+      end
+    else
+      redirect_to timeline_path
+    end
   end
 
 
   private
-
-  def ensure_end_user
-    @post = Post.find(params[:id])
-    @post.end_user != current_end_user
-    redirect_to end_user_path(current_end_user)
-  end
 
   def post_params
     params.require(:post).permit(:title, :text, :tag_list, image_files_images: [])
