@@ -4,28 +4,41 @@
       <div class="card">
         <div class="card-body">
           <h3 class="card-title">Contact</h3>
-          <table class="table-borderless">
-            <tbody>
-              <tr>
-                <th>お名前</th>
-                <th><%= @inquiry.name %></th>
-              </tr>
-              <tr>
-                <th>メールアドレス</th>
-                <th><%= @inquiry.email %></th>
-              </tr>
-              <tr>
-                <th>お問い合わせタイトル</th>
-                <th><%= @inquiry.title %></th>
-              </tr>
-              <tr>
-                <th>お問い合わせ内容</th>
-                <th><%= @inquiry.text %></th>
-              </tr>
-            </tbody>
-          </table>
+          <div class="row my-3">
+            <div class="col-auto">
+              お名前
+            </div>
+            <div class="col-auto offset-2">
+              <%= @inquiry.name %>
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="col-auto">
+              メールアドレス
+            </div>
+            <div class="col-auto offset-1">
+              <%= @inquiry.email %>
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="col-auto">
+              お問い合わせタイトル
+            </div>
+            <div class="col-auto ml-1">
+              <%= @inquiry.title %>
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="col-auto">
+              お問い合わせ内容
+            </div>
+            <div class="col-auto ml-5">
+              <%= @inquiry.text %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
