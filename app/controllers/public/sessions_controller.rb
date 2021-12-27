@@ -13,6 +13,8 @@ class Public::SessionsController < Devise::SessionsController
     if @end_user.valid_password?(params[:end_user][:password]) && (@end_user.is_deleted == true)
       flash[:notice] = "退会済みです<br>再度ご登録ください"
       redirect_to new_end_user_registration_path
+    elsif @end_user.valid_password?(params[:end_user][:password]) && (@end_user.is_deleted == false)
+      return if !@end_user
     else
       flash[:notice] = "入力が間違っています"
       redirect_back(fallback_location: new_end_user_session_path)

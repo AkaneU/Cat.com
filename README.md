@@ -41,6 +41,8 @@ https://docs.google.com/spreadsheets/d/1n1mBv_XRz5vAGK1WHTJvHoSPRu4iLwj5I6eveFex
 
 ## 使用素材
 - Font Awesome
+- Odan
+- ぱくたそ
 
 ## 機能一覧
 - いいね機能
