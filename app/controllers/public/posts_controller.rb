@@ -16,6 +16,7 @@ class Public::PostsController < ApplicationController
     @posts =Post.tagged_with(params[:id]).page(params[:page]).per(10)
   end
 
+ #今週のいいねの多い投稿
   def this_week_popular
     posts = Post.find(Favorite.group(:post_id).where(favorites: {created_at: Time.current.all_week}).group(:post_id).order('count(post_id) desc').pluck(:post_id))
     @posts = Kaminari.paginate_array(posts).limit(50).page(params[:page]).per(10)
@@ -26,6 +27,7 @@ class Public::PostsController < ApplicationController
     #end
   end
 
+  #今月のいいねの多い投稿
   def this_month_popular
     posts = Post.find(Favorite.group(:post_id).where(favorites: {created_at: Time.current.all_month}).group(:post_id).order('count(post_id) desc').pluck(:post_id))
     @posts = Kaminari.paginate_array(posts).limit(50).page(params[:page]).per(10)
@@ -35,6 +37,7 @@ class Public::PostsController < ApplicationController
     #end
   end
 
+  #先月のいいねの多い投稿
   def last_month_popular
     posts = Post.find(Favorite.group(:post_id).where(favorites: {created_at: Time.current.last_month.all_month}).group(:post_id).order('count(post_id) desc').pluck(:post_id))
     @posts = Kaminari.paginate_array(posts).limit(50).page(params[:page]).per(10)
