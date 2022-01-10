@@ -3,14 +3,16 @@ class Public::InquiriesController < ApplicationController
   def new
     @inquiry = Inquiry.new
   end
-
+  
+  #入力画面で入力した内容を確認
   def confirm
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.invalid?
       render :new
     end
   end
-
+  
+  #入力内容の確認後良ければcreateアクションを実行、修正が必要な場合入力画面に戻る
   def create
     @inquiry = Inquiry.new(inquiry_params)
     if params[:back]
