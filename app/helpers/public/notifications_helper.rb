@@ -13,6 +13,7 @@ module Public::NotificationsHelper
     end
   end
 
+  #未読の通知
   def unchecked_notifications
     @notifications = current_end_user.passive_notifications.where(checked: false)
   end
