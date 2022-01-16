@@ -5,6 +5,7 @@
   <%= link_to "Info", end_user_path(end_user), class: "nav-link active" %>
   <div class="nav-link">
     <%= link_to "Notice", notifications_path %>
+    <!--未読の通知がある場合未読通知の数をバッジで表示-->
     <% if unchecked_notifications.any? %>
       <div class="badge bg-info text-light">
         <%= unchecked_notifications.count %>
