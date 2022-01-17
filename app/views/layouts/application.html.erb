@@ -19,8 +19,11 @@
         </a>
         <div class="col text-right text-light">
           <% if end_user_signed_in? %>
-            Hello, <%= current_end_user.name %>!
-            <%= image_tag 'catlogo_3.png', size: "65x25" %>
+            Hello,
+            <%= link_to end_user_path(current_end_user), class: "text-light" do %>
+              <%= current_end_user.name %>!
+            <% end %>
+              <%= image_tag 'catlogo_3.png', size: "65x25" %>
           <% end %>
         </div>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,6 +33,11 @@
           <ul class="navbar-nav mr-auto my-2 my-lg-0" style="max-height: 100px;">
             <li class="nav-item">
               <% if admin_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to admin_root_path, class: "text-light" do %>
+                    <i class="fas fa-envelope-open-text"></i> Messages from users
+                  <% end %>
+                </li>
                 <li class="nav-item">
                   <%= link_to admin_end_users_path, class: "text-light" do %>
                     <i class="fas fa-users"></i> Users

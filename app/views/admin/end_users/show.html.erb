@@ -7,36 +7,37 @@
         </div>
         <div class="row">
           <div class="col-3 offset-1">
-            <%= attachment_image_tag @end_user, :profile_image, fallback: "no_image.jpg", class: "circle"%>
+            <%= attachment_image_tag @end_user, :profile_image, size: "150x150", fallback: "no_image.jpg", class: "circle"%>
             <br>
-            <%= @end_user.name %>
+            <div class="text-center my-1">
+              <strong><%= @end_user.name %></strong>
+            </div>
           </div>
-          <div class="col-7">
-            <table class="table-borderless">
-              <tbody>
-                <tr>
-                  <th>Username</th>
-                  <th><%= @end_user.name %></th>
-                </tr>
-                <tr>
-                  <th>Email</th>
-                  <th><%= @end_user.email %></th>
-                </tr>
-                <tr>
-                  <th>会員ステータス</th>
-                  <th>
-                    <% if @end_user.is_deleted == false %>
-                      <p class="text-success">登録済</p>
-                    <% else %>
-                      <p class="text-default">退会</p>
-                    <% end %>
-                  </th>
-                </tr>
-                <tr>
-                  <th><%= link_to "ユーザー情報編集", edit_admin_end_user_path(@end_user), class: "btn btn-secondary" %></th>
-                </tr>
-              </tbody>
-           </table>
+          <div class="col-5 offset-1">
+            <br>
+            <div class="row my-3">
+              <div class="col-auto">
+                メールアドレス
+              </div>
+              <div class="col-auto offset-1">
+                <%= @end_user.email %>
+              </div>
+            </div>
+            <div class="row my-3">
+              <div class="col-auto">
+                会員ステータス
+              </div>
+              <div class="col-auto offset-1">
+                <% if @end_user.is_deleted == false %>
+                  <p class="text-success">登録済</p>
+                <% else %>
+                  <p class="text-default">退会</p>
+                <% end %>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <%= link_to "ユーザー情報編集", edit_admin_end_user_path(@end_user), class: "btn btn-secondary btn-block" %>
+            </div>
           </div>
         </div>
       </div>
