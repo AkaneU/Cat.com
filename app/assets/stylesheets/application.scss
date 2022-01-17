@@ -32,6 +32,10 @@
   justify-content: center;
 }
 
- attachment_image_tag {
-  object-fit: cover,
+ .attachment_image_tag {
+  object-fit: cover;
  }
+
+.card-img-top {
+  object-fit: cover;
+}
