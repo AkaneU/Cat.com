@@ -16,8 +16,8 @@
         <div class="col offset-1">
           <%= post.title %>
           <br>
-          <%= post.text %>
-          <%= link_to "...", post_path(post), class: "" %>
+          <%= post.text.truncate(100) %>
+          <%= link_to "see detail", post_path(post), class: "" %>
         </div>
       </div>
     </div>
