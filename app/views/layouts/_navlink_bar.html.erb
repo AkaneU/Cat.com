@@ -1,0 +1,37 @@
+<div class="list-group text-center">
+  <% if current_page?(timeline_path) do %>
+    <%= link_to "Timeline", timeline_path, class: "list-group-item list-group-item-action active" %>
+  <% else %>
+    <%= link_to "Timeline", timeline_path, class: "list-group-item list-group-item-action" %>
+  <% end %>
+  <% if current_page?(popular_path || this_month_popular_path || last_month_popular) do %>
+    <%= link_to "Popular", popular_path, class: "list-group-item list-group-item-action active" %>
+  <% else %>
+    <%= link_to "Popular", popular_path, class: "list-group-item list-group-item-action" %>
+  <% end %>
+  <% if current_page?(posts_new_posts_path) do %>
+    <%= link_to "New", posts_new_posts_path, class: "list-group-item list-group-item-action active" %>
+  <% else %>
+    <%= link_to "New", posts_new_posts_path, class: "list-group-item list-group-item-action" %>
+  <% end %>
+  <% if current_page?(search_path) do %>
+    <%= link_to "Search", search_path, class: "list-group-item list-group-item-action active" %>
+  <% else %>
+    <%= link_to "Search", search_path, class: "list-group-item list-group-item-action" %>
+  <% end %>
+  <% if current_page?(new_post_path) do %>
+    <%= link_to "Create post", new_post_path, class: "list-group-item list-group-item-action active" %>
+  <% else %>
+    <%= link_to "Create post", new_post_path, class: "list-group-item list-group-item-action" %>
+  <% end %>
+  <% if current_page?(posts_favorited_path) do %>
+    <%= link_to "Your favorite posts", posts_favorited_path, class: "list-group-item list-group-item-action active" %>
+  <% else %>
+    <%= link_to "Your favorite posts", posts_favorited_path, class: "list-group-item list-group-item-action" %>
+  <% end %>
+  <% if current_page?(posts_path) do %>
+    <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action active" %>
+  <% else %>
+    <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action" %>
+  <% end %>
+</div>

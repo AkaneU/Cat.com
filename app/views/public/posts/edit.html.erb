@@ -15,6 +15,7 @@
       <div class="card">
         <div class="card-body">
           <h3 class="card-title">Edit post</h3>
+          
           <% if @post.errors.any? %>
             <div class="error_message">
               <%= @post.errors.count %>件のエラーがあります：
