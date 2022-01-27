@@ -15,8 +15,8 @@
       <div class="card">
         <div class="card-body">
           <h3 class="card-title">Search</h3>
-          <%= form_with url: search_result_path, method: :get, local: true do |f| %>
-            <%= f.text_area 'content', class: "form-control" %>
+          <%= form_with url: search_result_path, placeholder: "検索ワードを含むユーザー名やポストタイトルを検索できます", method: :get, local: true do |f| %>
+            <%= f.text_area 'content',  class: "form-control" %>
             <%= f.select 'model', options_for_select({"ユーザー" => "end_user", "投稿" => "post"}), class: "form-control" %>
             <%= f.submit "検索", class: "btn btn-success" %>
           <% end %>
