@@ -1,5 +1,6 @@
 module Public::NotificationsHelper
 
+  #通知画面の通知文
   def notification_form(notification)
     @visitor = notification.visitor
     case notification.action
