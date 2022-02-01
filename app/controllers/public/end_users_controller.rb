@@ -30,6 +30,7 @@ class Public::EndUsersController < ApplicationController
   def checks
   end
 
+  #論理削除でエンドユーザーの退会を行う
   def withdrawal
     @end_user = current_end_user
     @end_user.update(is_deleted: true)
