@@ -7,6 +7,7 @@ class Public::SessionsController < Devise::SessionsController
 
   protected
 
+  #ログインを行おうとしているエンドユーザーが退会済みか否かを判定し退会済みなら新規登録画面に遷移
   def reject_end_user
     @end_user = EndUser.find_by(email: params[:end_user][:email])
     return if !@end_user
