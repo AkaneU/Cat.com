@@ -11,6 +11,7 @@
         <%= link_to "Your posts", posts_path, class: "list-group-item list-group-item-action" %>
       </div>
     </div>
+    <!--表示しているエンドユーザーが今ログインしているエンドユーザーか否かで表示を分岐-->
     <div class="col offset-1">
       <% if @end_user == current_end_user %>
         <%= render 'current_end_user', end_user: @end_user %>
