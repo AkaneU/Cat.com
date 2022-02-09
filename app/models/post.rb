@@ -21,6 +21,7 @@ class Post < ApplicationRecord
     favorites.where(end_user_id: end_user.id).exists?
   end
 
+  #いいねがされたとき通知を作る
   def create_notification_favorite!(current_end_user)
     temp = Notification.where(["visitor_id = ? and visited_id and post_id = ? and action = ?", current_end_user.id, end_user.id, 'favorite'])
     if temp.blank?
@@ -36,6 +37,7 @@ class Post < ApplicationRecord
     end
   end
 
+  #投稿にコメントがされたときに通知を作る
   def create_notification_comment!(current_end_user, post_comment_id)
     temp_ids = PostComment.where(post_id: id).where.not("end_user_id=? or end_user_id=?", current_end_user.id, end_user_id).select(:end_user_id).distinct
     temp_ids.each do |temp_id|
