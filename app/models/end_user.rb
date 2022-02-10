@@ -34,7 +34,7 @@ class EndUser < ApplicationRecord
     followings.include?(end_user)
   end
 
-
+  #フォローされたときに通知を作成
   def create_notification_follow!(current_end_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_end_user.id, id, 'follow'])
     if temp.blank?
