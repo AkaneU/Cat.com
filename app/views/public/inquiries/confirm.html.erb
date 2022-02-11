@@ -25,6 +25,7 @@
               </tr>
             </tbody>
           </table>
+          <!--表示されていないがhiddenで退会しようとしているエンドユーザーの情報を保持-->
           <%= form_with model:@inquiry, local: true do |f| %>
             <%= f.hidden_field :name, value: @inquiry.name %>
             <%= f.hidden_field :email, value: @inquiry.email %>
