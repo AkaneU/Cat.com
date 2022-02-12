@@ -23,6 +23,7 @@
               <% end %>
             </div>
           <% end %>
+          <!--画像は複数アップロードを許可-->
           <%= form_with model:@post, local: true do |f| %>
             <%= f.attachment_field :image_files_images, multiple: true %>
             <br><br>
