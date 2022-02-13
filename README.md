@@ -49,7 +49,7 @@ https://docs.google.com/spreadsheets/d/1n1mBv_XRz5vAGK1WHTJvHoSPRu4iLwj5I6eveFex
 - フォロー機能
 - コメント機能
 - お気に入り機能
-- タグ付け機能
+- 複数タグ付け機能
 - 問い合わせ機能
 - 検索機能
 - 通知機能
